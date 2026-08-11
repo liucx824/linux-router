@@ -1,0 +1,14 @@
+# 构建产物
+/router
+/router.new
+/router.v*
+*.o
+*.exe
+*.tmp
+
+# 本机 Claude Code 配置
+.claude/
+
+# 文档不入库
+*.docx
+docs/
