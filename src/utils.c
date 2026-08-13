@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "utils.h"
+#include "interface.h"
 
 /* 点分十进制 → ip_t（网络序值）。等效 inet_pton 的严格校验，自包含便于移植。 */
 int str_to_ip(const char *s, ip_t *out)
@@ -129,7 +130,16 @@ bool is_multicast(ip_t ip)
 
 bool is_broadcast(ip_t ip)
 {
-    return ip == 0xFFFFFFFFu;
+    int i;
+    if (ip == 0xFFFFFFFFu)
+        return true;                 /* 全局广播 */
+    for (i = 0; i < iface_count(); i++) {      /* 子网定向广播 */
+        iface_t *it = iface_at(i);
+        if (it->ip && (ip & it->netmask) == (it->ip & it->netmask)
+            && (ip & ~it->netmask) == ~it->netmask)
+            return true;
+    }
+    return false;
 }
 
 /* 空白分词：把 s 原地改写（空白→NUL），argv[0..argc-1] 指向各词首，argv[argc]=NULL。 */

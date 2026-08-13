@@ -19,6 +19,7 @@
 #include "thread_pool.h"
 #include "config.h"
 #include "remote.h"
+#include "route.h"
 #include "terminal.h"
 #include "log.h"
 #include "utils.h"

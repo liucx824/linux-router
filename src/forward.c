@@ -10,6 +10,7 @@
 #include "route.h"
 #include "firewall.h"
 #include "interface.h"
+#include "mempool.h"
 #include "packet.h"
 #include "utils.h"
 #include "log.h"

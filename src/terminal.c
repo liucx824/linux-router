@@ -336,7 +336,6 @@ int cmd_dispatch(const char *line, char *out, size_t outsz)
     char buf[512];
     char *argv[24];
     int argc, i;
-    int rc = 0;
 
     snprintf(buf, sizeof(buf), "%s", line);
     argc = tok_split(buf, argv, 24);

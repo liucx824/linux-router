@@ -7,6 +7,7 @@
 #include "forward.h"
 #include "route.h"
 #include "interface.h"
+#include "mempool.h"
 #include "packet.h"
 #include "utils.h"
 #include "config.h"
